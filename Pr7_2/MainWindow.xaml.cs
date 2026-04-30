@@ -1,19 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace Pr7_2
+namespace Rot13App
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
@@ -23,6 +11,24 @@ namespace Pr7_2
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Обработчик нажатия кнопки ROT13. Выполняет преобразование введённого текста.
+        /// </summary>
+        private void TransformButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string input = InputTextBox.Text;
+                string output = Rot13Cipher.Encrypt(input);
+                OutputTextBox.Text = output;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Произошла ошибка: {ex.Message}", "Ошибка",
+                                MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

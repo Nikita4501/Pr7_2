@@ -1,12 +1,27 @@
-﻿<Window x:Class="Pr7_2.MainWindow"
+﻿<Window x:Class="Rot13App.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Pr7_2"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="ROT13 Cipher" Height="250" Width="500"
+        ResizeMode="CanResizeWithGrip">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Введите текст:" FontWeight="Bold" Margin="0,0,0,5"/>
+        <TextBox x:Name="InputTextBox" Grid.Row="1" Height="60" TextWrapping="Wrap"
+                 ToolTip="Введите текст для преобразования ROT13"
+                 AcceptsReturn="False"/>
+        <Button x:Name="TransformButton" Grid.Row="2" Content="ROT13"
+                Margin="0,10" Width="100" Height="30"
+                ToolTip="Выполнить преобразование ROT13"
+                Click="TransformButton_Click"/>
+        <TextBlock Grid.Row="3" Text="Результат:" FontWeight="Bold" Margin="0,10,0,5"/>
+        <TextBox x:Name="OutputTextBox" Grid.Row="3" Margin="0,30,0,0"
+                 IsReadOnly="True" TextWrapping="Wrap"
+                 ToolTip="Результат преобразования"/>
     </Grid>
 </Window>
