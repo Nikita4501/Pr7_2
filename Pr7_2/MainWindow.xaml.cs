@@ -14,9 +14,9 @@ namespace Rot13App
         }
 
         /// <summary>
-        /// Обработчик нажатия кнопки ROT13. Выполняет преобразование введённого текста.
+        /// Обработчик кнопки «Зашифровать» – вызывает Rot13Cipher.Encrypt.
         /// </summary>
-        private void TransformButton_Click(object sender, RoutedEventArgs e)
+        private void EncryptButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -26,7 +26,25 @@ namespace Rot13App
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Произошла ошибка: {ex.Message}", "Ошибка",
+                MessageBox.Show($"Ошибка при шифровании: {ex.Message}", "Ошибка",
+                                MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        /// <summary>
+        /// Обработчик кнопки «Расшифровать» – вызывает Rot13Cipher.Decrypt.
+        /// </summary>
+        private void DecryptButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string input = InputTextBox.Text;
+                string output = Rot13Cipher.Decrypt(input);
+                OutputTextBox.Text = output;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при расшифровании: {ex.Message}", "Ошибка",
                                 MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
